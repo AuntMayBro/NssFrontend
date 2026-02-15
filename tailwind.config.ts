@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,11 +26,13 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         nss: {
-          navy: "hsl(var(--nss-navy))",
-          "navy-light": "hsl(var(--nss-navy-light))",
-          blue: "hsl(var(--nss-blue))",
-          gold: "hsl(var(--nss-gold))",
-          white: "hsl(var(--nss-white))",
+          red: "#D32F2F",
+          navy: "#0D1B2A",
+          "navy-light": "#1B263B",
+          gold: "#FFC107",
+          white: "#FFFFFF",
+          "red-dark": "#B71C1C",
+          "red-light": "#FFCDD2",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -86,9 +89,17 @@ export default {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
         "pulse-glow": {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.8", transform: "scale(1.05)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
       animation: {
@@ -96,10 +107,13 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
         "fade-in": "fade-in 0.6s ease-out forwards",
+        "fade-up": "fade-up 0.8s ease-out forwards",
         "pulse-glow": "pulse-glow 3s infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
       backgroundImage: {
-        "hero-gradient": "linear-gradient(to right, hsl(var(--nss-navy)), hsl(var(--nss-blue)))",
+        "hero-gradient": "linear-gradient(to right, #0D1B2A, #1B263B)",
+        "nss-gradient": "linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%)",
         "glass": "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0))",
       },
     },

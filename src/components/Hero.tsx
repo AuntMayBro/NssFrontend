@@ -1,68 +1,149 @@
 
-import { ArrowRight, Calendar, Users, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, ChevronDown } from 'lucide-react';
+import Section from './ui/Section';
+import { useState, useEffect } from 'react';
+import { client, urlFor } from '@/lib/sanity'; // Import Sanity client
 
 const Hero = () => {
+    // Initial static images
+    const [images, setImages] = useState<string[]>([
+        "/assets/gp.jpeg"
+    ]);
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    // Fetch Gallery Images from Sanity
+    useEffect(() => {
+        const fetchGalleryImages = async () => {
+            try {
+                const query = `*[_type == "gallery"] { image }`;
+                const data = await client.fetch(query);
+
+                if (data && data.length > 0) {
+                    const sanityImages = data
+                        .filter((item: any) => item.image) // Ensure image exists
+                        .map((item: any) => urlFor(item.image).url()); // Get URL
+
+                    // Append to existing images, avoiding duplicates if needed
+                    setImages(prev => [...prev, ...sanityImages]);
+                }
+            } catch (error) {
+                console.error("Failed to fetch gallery images for Hero slideshow:", error);
+            }
+        };
+
+        fetchGalleryImages();
+    }, []);
+
+    // Slideshow Timer
+    useEffect(() => {
+        if (images.length <= 1) return; // Don't cycle if only 1 image
+
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 5000); // Change image every 5 seconds
+
+        return () => clearInterval(interval);
+    }, [images.length]); // Re-run when images array changes
+
     return (
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-nss-navy">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-nss-blue/20 via-nss-navy to-nss-navy" />
-                <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid-pattern.svg')] opacity-10" />
+        <Section id="home" className="relative min-h-screen flex flex-col pt-24 md:pt-32">
 
-                {/* Animated Blobs */}
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nss-blue/30 rounded-full blur-3xl animate-pulse-glow" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-nss-gold/20 rounded-full blur-3xl animate-pulse-glow delay-1000" />
-            </div>
+            {/* Top Content Section - Clean White Background */}
+            <div className="flex-none w-full bg-white relative z-10 px-4 md:px-8 pb-12 md:pb-16 text-center">
+                <div className="max-w-[85rem] mx-auto flex items-center justify-between">
 
-            <div className="container relative z-10 px-6">
-                <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm animate-fade-in">
-                        <span className="w-2 h-2 rounded-full bg-nss-gold" />
-                        <span className="text-sm font-medium text-nss-gold">Join the movement of change</span>
+                    {/* Left Image - Girl Sapling */}
+                    <div className="hidden lg:block w-1/4 xl:w-1/3 animate-fade-right">
+                        <img
+                            src="/assets/girl-sapling.png"
+                            alt="NSS Volunteer planting sapling"
+                            className="w-full h-auto object-contain max-h-[400px]"
+                        />
+                        {/* Optional decorative element behind image */}
+                        <div className="absolute top-1/2 left-10 w-32 h-32 bg-nss-green/10 rounded-full blur-3xl -z-10"></div>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold font-heading text-white tracking-tight animate-fade-in [animation-delay:200ms]">
-                        Serve with <span className="gradient-text">Pride</span> <br />
-                        Lead with <span className="gradient-text">Confidence</span>
-                    </h1>
+                    {/* Center Content */}
+                    <div className="flex-1 max-w-4xl mx-auto px-4">
 
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl animate-fade-in [animation-delay:400ms]">
-                        National Service Scheme (NSS) IET DAVV unit is dedicated to community service,
-                        personality development, and nation-building through voluntary contribution.
-                    </p>
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nss-navy/5 border border-nss-navy/10 mb-6 animate-fade-in mx-auto">
+                            <span className="w-2 h-2 rounded-full bg-nss-red animate-pulse"></span>
+                            <span className="text-xs font-bold tracking-wider text-nss-navy uppercase">Official Unit &bull; IET DAVV</span>
+                        </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in [animation-delay:600ms]">
-                        <Button size="lg" className="bg-nss-blue hover:bg-nss-blue/90 text-white rounded-full px-8 h-12 text-lg shadow-lg shadow-nss-blue/25">
-                            Join Us Today <ArrowRight className="w-5 h-5 ml-2" />
-                        </Button>
-                        <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8 h-12 text-lg">
-                            View Events
-                        </Button>
-                    </div>
+                        {/* Headline */}
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-nss-navy mb-6 leading-tight animate-fade-up">
+                            NSS <span className="text-nss-red">IET DAVV</span>
+                        </h1>
 
-                    {/* Stats/Features */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full pt-12 animate-fade-in [animation-delay:800ms]">
-                        {[
-                            { icon: Users, label: "Volunteers", value: "500+" },
-                            { icon: Calendar, label: "Annual Events", value: "50+" },
-                            { icon: Heart, label: "Lives Impacted", value: "10k+" },
-                        ].map((stat, index) => (
-                            <div
-                                key={index}
-                                className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-2 group hover:-translate-y-1 transition-transform"
+                        <p className="text-lg md:text-xl text-gray-600 mb-10 mx-auto leading-relaxed animate-fade-up font-light" style={{ animationDelay: '0.1s' }}>
+                            "Not Me But You"<br />
+                            Join the movement of youth leadership, community service, and nation-building.
+                        </p>
+
+                        {/* Action Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-up mb-12" style={{ animationDelay: '0.2s' }}>
+                            <a
+                                href="/#contact"
+                                className="group relative px-6 py-3 bg-nss-navy text-white rounded-lg font-bold shadow-md shadow-nss-navy/20 hover:shadow-lg hover:-translate-y-0.5 transition-all overflow-hidden flex items-center justify-center gap-2 text-sm md:text-base"
                             >
-                                <div className="w-12 h-12 rounded-full bg-nss-blue/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                                    <stat.icon className="w-6 h-6 text-nss-blue" />
-                                </div>
-                                <h3 className="text-3xl font-bold text-white">{stat.value}</h3>
-                                <p className="text-muted-foreground text-sm font-medium uppercase tracking-wider">{stat.label}</p>
-                            </div>
-                        ))}
+                                <span>Join Our Unit</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <div className="absolute inset-0 bg-white/10 translate-x-[-100%] skew-x-[-15deg] group-hover:animate-shine"></div>
+                            </a>
+                            <a
+                                href="/activities"
+                                className="px-6 py-3 bg-white border-2 border-slate-200 text-nss-navy rounded-lg font-semibold hover:border-nss-navy hover:text-nss-navy transition-all flex items-center justify-center shadow-sm text-sm md:text-base"
+                            >
+                                Explore Activities
+                            </a>
+                        </div>
+
+
+                    </div>
+
+                    {/* Right Image - NSS Volunteer */}
+                    <div className="hidden lg:block w-1/4 xl:w-1/3 animate-fade-left">
+                        <img
+                            src="/assets/nss-vol.png"
+                            alt="NSS Volunteers Group"
+                            className="w-full h-auto object-contain max-h-[400px]"
+                        />
+                        {/* Optional decorative element behind image */}
+                        <div className="absolute top-1/2 right-10 w-32 h-32 bg-nss-blue/10 rounded-full blur-3xl -z-10"></div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            {/* Bottom Image Section - Slideshow */}
+            <div className="flex-grow w-full relative min-h-[60vh] md:min-h-[75vh] bg-gray-100 overflow-hidden">
+                <div className="absolute inset-0 bg-gray-100 animate-pulse"></div> {/* Placeholder */}
+
+                {images.map((img, index) => (
+                    <div
+                        key={`${img}-${index}`}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                            }`}
+                    >
+                        <img
+                            src={img}
+                            alt={`NSS Slide ${index + 1}`}
+                            className="w-full h-full object-cover object-top"
+                        />
+                    </div>
+                ))}
+
+                {/* Scroll Indicator Overlay on Image */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-10">
+                    <a href="/#about" className="text-white drop-shadow-md opacity-80 hover:opacity-100 transition-opacity p-2 bg-black/20 backdrop-blur-sm rounded-full">
+                        <ChevronDown className="w-6 h-6" />
+                    </a>
+                </div>
+            </div>
+
+        </Section>
     );
 };
 

@@ -1,101 +1,64 @@
-import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
-
     return (
-        <footer className="bg-nss-navy border-t border-white/10 pt-16 pb-8">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                    {/* Brand Column */}
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full border border-nss-blue/50 overflow-hidden">
-                                <img src="/placeholder.svg" alt="NSS Logo" className="w-full h-full object-cover" />
+        <footer className="bg-nss-navy-light text-white pt-16 pb-8 border-t border-white/5 font-sans">
+            <div className="container mx-auto px-4 md:px-8">
+                <div className="grid md:grid-cols-4 gap-8 mb-12">
+                    <div className="col-span-1 md:col-span-2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                <span className="text-nss-navy font-bold">NSS</span>
                             </div>
-                            <h3 className="text-xl font-bold font-heading text-white">NSS IET DAVV</h3>
+                            <span className="font-heading font-bold text-xl tracking-tight">NSS IET DAVV</span>
                         </div>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                            Empowering youth to serve the nation. "Not Me But You" reflects the essence of democratic living and upholds the need for self-less service.
+                        <p className="text-gray-400 max-w-sm leading-relaxed mb-6 font-light">
+                            National Service Scheme, Institute of Engineering and Technology, Devi Ahilya Vishwavidyalaya.
+                            <br />
+                            <span className="italic text-gray-300">"Not Me But You"</span>
                         </p>
-                        <div className="flex gap-4 pt-2">
-                            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:bg-nss-blue hover:text-white transition-all duration-300"
-                                >
-                                    <Icon size={16} />
-                                </a>
-                            ))}
+                        <div className="flex gap-4">
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-nss-blue hover:text-white transition-all hover:-translate-y-1">
+                                <Facebook size={20} />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all hover:-translate-y-1">
+                                <Instagram size={20} />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all hover:-translate-y-1">
+                                <Twitter size={20} />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all hover:-translate-y-1">
+                                <Linkedin size={20} />
+                            </a>
                         </div>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="space-y-4">
-                        <h4 className="text-lg font-semibold text-white">Quick Links</h4>
-                        <ul className="space-y-2">
-                            {["About Us", "Our Team", "Events", "Gallery", "Contact Us"].map((item) => (
-                                <li key={item}>
-                                    <Link
-                                        to={`/${item.toLowerCase().replace(" ", "-")}`}
-                                        className="text-muted-foreground hover:text-nss-blue transition-colors text-sm"
-                                    >
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
+                    <div>
+                        <h4 className="font-bold text-lg mb-6 text-nss-gold relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-nss-gold">Quick Links</h4>
+                        <ul className="space-y-3">
+                            <li><a href="/#home" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Home</a></li>
+                            <li><a href="/#about" className="text-gray-400 hover:text-white transition-colors hover:pl-2">About Us</a></li>
+                            <li><a href="/activities" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Activities</a></li>
+                            <li><a href="/#gallery" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Gallery</a></li>
+                            <li><a href="/#contact" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Contact</a></li>
                         </ul>
                     </div>
 
-                    {/* Contact Info */}
-                    <div className="space-y-4">
-                        <h4 className="text-lg font-semibold text-white">Contact Us</h4>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                                <MapPin size={18} className="text-nss-blue mt-0.5 shrink-0" />
-                                <span>IET DAVV Campus, Khandwa Road, Indore, Madhya Pradesh 452017</span>
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                                <Phone size={18} className="text-nss-blue shrink-0" />
-                                <span>+91 123 456 7890</span>
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                                <Mail size={18} className="text-nss-blue shrink-0" />
-                                <span>nss@ietdavv.edu.in</span>
-                            </li>
+                    <div>
+                        <h4 className="font-bold text-lg mb-6 text-nss-gold relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-nss-gold">Resources</h4>
+                        <ul className="space-y-3">
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Student Registration</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors hover:pl-2">NSS Manual</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Annual Reports</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Volunteer Login</a></li>
                         </ul>
-                    </div>
-
-                    {/* Newsletter */}
-                    <div className="space-y-4">
-                        <h4 className="text-lg font-semibold text-white">Stay Updated</h4>
-                        <p className="text-sm text-muted-foreground">
-                            Subscribe to our newsletter for the latest updates and events.
-                        </p>
-                        <div className="flex flex-col gap-2">
-                            <Input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-nss-blue"
-                            />
-                            <Button className="w-full bg-nss-blue hover:bg-nss-blue/90 text-white">
-                                Subscribe
-                            </Button>
-                        </div>
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-sm text-muted-foreground">
-                        © {currentYear} NSS IET DAVV. All rights reserved.
-                    </p>
-                    <p className="text-sm text-muted-foreground flex items-center gap-1">
-                        Made with <Heart size={14} className="fill-red-500 text-red-500 animate-pulse" /> by NSS Tech Team
-                    </p>
+                <div className="pt-8 border-t border-white/5 text-center md:flex md:justify-between md:items-center text-gray-500 text-sm">
+                    <p>&copy; {new Date().getFullYear()} NSS IET DAVV. All rights reserved.</p>
+                    <p className="flex items-center justify-center gap-1 mt-2 md:mt-0">Designed with <span className="text-red-500">❤️</span> by NSS Web Team</p>
                 </div>
             </div>
         </footer>
