@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import nssLogo from '../assets/nss-logo.webp';
 import davvLogo from '../assets/davv-logo.png';
+import { JoinNSSDialog } from './registration/JoinNSSDialog';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,6 @@ const Navbar = () => {
         { name: 'Home', href: '/#home' },
         { name: 'About', href: '/#about' },
         { name: 'Activities', href: '/activities' }, // Point to the separate page
-        { name: 'Gallery', href: '/#gallery' },
         { name: 'Team', href: '/#team' },
         { name: 'Contact', href: '/#contact' },
     ];
@@ -89,17 +89,20 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
-                    <a
-                        href="/#contact"
-                        className={cn(
-                            "px-5 py-2 rounded-md font-semibold text-sm transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 border",
-                            scrolled
-                                ? "bg-nss-red text-white border-nss-red hover:bg-nss-red-dark"
-                                : "bg-nss-navy text-white border-nss-navy hover:bg-nss-blue" // Dark button for contrast
-                        )}
-                    >
-                        Join Now
-                    </a>
+                    <JoinNSSDialog
+                        trigger={
+                            <button
+                                className={cn(
+                                    "px-5 py-2 rounded-md font-semibold text-sm transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 border",
+                                    scrolled
+                                        ? "bg-nss-red text-white border-nss-red hover:bg-nss-red-dark"
+                                        : "bg-nss-navy text-white border-nss-navy hover:bg-nss-blue"
+                                )}
+                            >
+                                Register
+                            </button>
+                        }
+                    />
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -133,13 +136,18 @@ const Navbar = () => {
                         {link.name}
                     </a>
                 ))}
-                <a
-                    href="/#contact"
-                    onClick={() => setIsOpen(false)}
-                    className="px-8 py-3 rounded-full bg-nss-red text-white font-bold text-lg shadow-lg hover:bg-nss-red-dark transition-all mt-4 w-48 text-center"
-                >
-                    Join Now
-                </a>
+                <div className="mt-4 w-48 text-center">
+                    <JoinNSSDialog
+                        trigger={
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="w-full px-8 py-3 rounded-full bg-nss-red text-white font-bold text-lg shadow-lg hover:bg-nss-red-dark transition-all"
+                            >
+                                Register
+                            </button>
+                        }
+                    />
+                </div>
             </div>
         </nav>
     );

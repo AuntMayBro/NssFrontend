@@ -6,7 +6,8 @@ export const client = createClient({
     projectId: "3mmc54h9",
     dataset: "production",
     apiVersion: "2024-01-01",
-    useCdn: true,
+    useCdn: false, // We need fresh data for registration checks
+    token: import.meta.env.VITE_SANITY_TOKEN,
 });
 
 const builder = imageUrlBuilder(client);

@@ -9,6 +9,9 @@ import ActivitiesPage from "./pages/Activities";
 import PreviousTeams from "./pages/PreviousTeams";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import RegistrationPage from "./pages/RegistrationPage";
+import CheckRegistrationPage from "./pages/CheckRegistrationPage";
+import VolunteerList from "./components/registration/VolunteerList";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/activities" element={<ActivitiesPage />} />
           <Route path="/previous-teams" element={<PreviousTeams />} />
+          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/check-registration" element={<CheckRegistrationPage />} />
+          <Route path="/volunteers" element={<VolunteerList />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

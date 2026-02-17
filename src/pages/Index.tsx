@@ -6,7 +6,7 @@ import About from "@/components/About";
 // import Activities from "@/components/Activities"; // Replaced with dynamic fetch
 import Section from '@/components/ui/Section';
 import Team from "@/components/Team";
-import Contact from "@/components/Contact";
+
 import Footer from "@/components/Footer";
 import ActivityCard from "@/components/ActivityCard";
 import { client } from "@/lib/sanity";
@@ -84,7 +84,7 @@ const Index = () => {
 
 
       <Team />
-      <Contact />
+
       <Footer />
     </div>
   );

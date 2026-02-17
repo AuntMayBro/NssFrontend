@@ -1,5 +1,13 @@
 
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, UserPlus, Search } from 'lucide-react';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 import Section from './ui/Section';
 import { useState, useEffect } from 'react';
 import { client, urlFor } from '@/lib/sanity'; // Import Sanity client
@@ -84,21 +92,61 @@ const Hero = () => {
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-up mb-12" style={{ animationDelay: '0.2s' }}>
-                            <a
-                                href="/#contact"
-                                className="group relative px-6 py-3 bg-nss-navy text-white rounded-lg font-bold shadow-md shadow-nss-navy/20 hover:shadow-lg hover:-translate-y-0.5 transition-all overflow-hidden flex items-center justify-center gap-2 text-sm md:text-base"
-                            >
-                                <span>Join Our Unit</span>
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                <div className="absolute inset-0 bg-white/10 translate-x-[-100%] skew-x-[-15deg] group-hover:animate-shine"></div>
-                            </a>
-                            <a
-                                href="/activities"
-                                className="px-6 py-3 bg-white border-2 border-slate-200 text-nss-navy rounded-lg font-semibold hover:border-nss-navy hover:text-nss-navy transition-all flex items-center justify-center shadow-sm text-sm md:text-base"
-                            >
-                                Explore Activities
-                            </a>
+                        <div className="flex flex-col justify-center items-center animate-fade-up mb-12" style={{ animationDelay: '0.2s' }}>
+
+                            <Dialog>
+                                <DialogTrigger asChild>
+                                    <button
+                                        className="group relative px-6 py-2.5 bg-nss-navy text-white rounded-md font-medium shadow-md shadow-nss-navy/20 hover:shadow-lg hover:-translate-y-0.5 transition-all overflow-hidden flex items-center justify-center gap-2 text-sm"
+                                    >
+                                        <span>Join NSS</span>
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        <div className="absolute inset-0 bg-white/10 translate-x-[-100%] skew-x-[-15deg] group-hover:animate-shine"></div>
+                                    </button>
+                                </DialogTrigger>
+                                <DialogContent className="sm:max-w-md">
+                                    <DialogHeader>
+                                        <DialogTitle>Join National Service Scheme</DialogTitle>
+                                        <DialogDescription>
+                                            Choose an option to proceed with your volunteer journey.
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="flex flex-col gap-4 py-4">
+                                        <a
+                                            href="/registration"
+                                            className="flex items-center justify-between p-4 rounded-lg border hover:bg-slate-50 transition-colors group"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <div className="p-2 bg-primary/10 rounded-full text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                                    <UserPlus className="w-5 h-5" />
+                                                </div>
+                                                <div className="text-left">
+                                                    <p className="font-semibold text-foreground">New Registration</p>
+                                                    <p className="text-sm text-muted-foreground">Register as a new volunteer</p>
+                                                </div>
+                                            </div>
+                                            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
+                                        </a>
+
+                                        <a
+                                            href="/check-registration"
+                                            className="flex items-center justify-between p-4 rounded-lg border hover:bg-slate-50 transition-colors group"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <div className="p-2 bg-primary/10 rounded-full text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                                    <Search className="w-5 h-5" />
+                                                </div>
+                                                <div className="text-left">
+                                                    <p className="font-semibold text-foreground">Know Registration Number</p>
+                                                    <p className="text-sm text-muted-foreground">Find your existing ID</p>
+                                                </div>
+                                            </div>
+                                            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
+                                        </a>
+                                    </div>
+                                </DialogContent>
+                            </Dialog>
+
                         </div>
 
 
