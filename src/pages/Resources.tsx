@@ -45,27 +45,27 @@ const ResourcesPage = () => {
                     </span>
                     {title}
                 </h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
                     {items.map((item: any) => (
                         <a
                             key={item._id}
                             href={item.fileUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 hover:-translate-y-1 block"
+                            className="group bg-white rounded-xl p-3 md:p-6 shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 hover:-translate-y-1 block h-full flex flex-col justify-between"
                         >
-                            <div className="flex justify-between items-start mb-4">
-                                <div className="p-3 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-nss-navy group-hover:text-white transition-colors duration-300">
-                                    <FileText size={24} />
+                            <div className="flex justify-between items-start mb-2 md:mb-4">
+                                <div className="p-2 md:p-3 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-nss-navy group-hover:text-white transition-colors duration-300">
+                                    <FileText size={20} className="md:w-6 md:h-6" />
                                 </div>
-                                <Download size={20} className="text-gray-400 group-hover:text-nss-navy transition-colors" />
+                                <Download size={16} className="text-gray-400 group-hover:text-nss-navy transition-colors md:w-5 md:h-5" />
                             </div>
-                            <h4 className="font-semibold text-lg text-gray-800 mb-2 group-hover:text-nss-navy transition-colors">
+                            <h4 className="font-semibold text-sm md:text-lg text-gray-800 mb-2 group-hover:text-nss-navy transition-colors line-clamp-2">
                                 {item.title}
                             </h4>
-                            <div className="flex items-center gap-4 text-sm text-gray-500">
+                            <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 text-xs md:text-sm text-gray-500 mt-auto">
                                 {item.academicYear && (
-                                    <span className="bg-gray-100 px-2 py-1 rounded text-xs font-medium">
+                                    <span className="bg-gray-100 px-1.5 py-0.5 md:px-2 md:py-1 rounded text-[10px] md:text-xs font-medium w-fit">
                                         {item.academicYear}
                                     </span>
                                 )}

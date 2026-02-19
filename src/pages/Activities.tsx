@@ -54,12 +54,20 @@ const ActivitiesPage = () => {
             <Navbar />
 
             {/* Header Section */}
-            <div className="bg-nss-navy pt-32 pb-16 text-white text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/5 opacity-10" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-                <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4 relative z-10">Our Activities</h1>
-                <p className="text-gray-300 max-w-2xl mx-auto px-4 relative z-10">
+            {/* Header Section */}
+            <div className="bg-gradient-to-b from-nss-blue/10 to-white pt-32 pb-12 md:pt-40 md:pb-20 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-grid-slate-200 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10 bg-[length:20px_20px]"></div>
+
+                <h1 className="text-4xl md:text-6xl font-bold font-heading mb-4 relative z-10 text-nss-navy tracking-tight">
+                    Our <span className="text-nss-red">Activities</span>
+                </h1>
+                <p className="text-gray-600 max-w-2xl mx-auto px-4 relative z-10 text-lg md:text-xl font-medium">
                     A timeline of our impact and service initiatives.
                 </p>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-1/4 left-10 w-20 h-20 bg-nss-blue/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute top-1/3 right-10 w-32 h-32 bg-nss-red/10 rounded-full blur-3xl animate-pulse delay-700"></div>
             </div>
 
             <Section className="py-12">
@@ -79,7 +87,7 @@ const ActivitiesPage = () => {
                                 </div>
 
                                 {/* Activities Grid for the Year */}
-                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                                     {activitiesByYear[year].map((activity: any) => (
                                         <ActivityCard key={activity._id} activity={activity} />
                                     ))}

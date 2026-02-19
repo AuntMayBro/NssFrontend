@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import nssLogo from '../assets/nss-logo.webp';
@@ -17,6 +18,18 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Lock body scroll when menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     const navLinks = [
         { name: 'Home', href: '/#home' },
@@ -107,48 +120,68 @@ const Navbar = () => {
 
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="lg:hidden p-2 focus:outline-none z-50 relative rounded-md transition-colors"
+                    className="lg:hidden p-2 focus:outline-none z-[1000] relative rounded-md transition-colors"
                     onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle menu"
                 >
                     {isOpen ? (
-                        <X className="text-white" size={28} /> // Keep white as it's over the dark overlay
+                        <X className="text-nss-navy" size={28} />
                     ) : (
-                        <Menu className={cn(
-                            "transition-colors",
-                            "text-nss-navy" // Always dark
-                        )} size={28} />
+                        <Menu className="text-nss-navy" size={28} />
                     )}
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
-            <div className={cn(
-                "fixed inset-0 bg-nss-navy/95 backdrop-blur-xl z-40 lg:hidden transition-all duration-300 flex flex-col justify-center items-center gap-8",
-                isOpen ? "opacity-100 pointer-events-auto translate-x-0" : "opacity-0 pointer-events-none translate-x-full"
-            )}>
-                {navLinks.map((link) => (
-                    <a
-                        key={link.name}
-                        href={link.href}
+            {/* Mobile Menu Overlay - Portal */}
+            {createPortal(
+                <div className={cn(
+                    "fixed inset-0 bg-white/95 backdrop-blur-xl z-[999] lg:hidden transition-all duration-500 flex flex-col justify-center items-center gap-8 px-4",
+                    isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
+                )}>
+                    {/* Close Button Inside Portal (Optional but good UX) */}
+                    <button
+                        className="absolute top-6 right-6 p-2 focus:outline-none rounded-md transition-colors text-nss-navy"
                         onClick={() => setIsOpen(false)}
-                        className="text-xl font-heading font-medium text-white/90 hover:text-white hover:scale-105 transition-all"
+                        aria-label="Close menu"
                     >
-                        {link.name}
-                    </a>
-                ))}
-                <div className="mt-4 w-48 text-center">
-                    <JoinNSSDialog
-                        trigger={
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="w-full px-8 py-3 rounded-full bg-nss-red text-white font-bold text-lg shadow-lg hover:bg-nss-red-dark transition-all"
-                            >
-                                Register
-                            </button>
-                        }
-                    />
-                </div>
-            </div>
+                        <X size={32} />
+                    </button>
+
+                    {navLinks.map((link, idx) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            onClick={() => setIsOpen(false)}
+                            className={cn(
+                                "text-3xl font-heading font-bold text-nss-navy hover:text-nss-red hover:scale-105 transition-all transform",
+                                isOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                            )}
+                            style={{ transitionDelay: `${idx * 100}ms` }}
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+
+                    <div
+                        className={cn(
+                            "mt-8 w-full max-w-xs transition-all duration-700 delay-500",
+                            isOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                        )}
+                    >
+                        <JoinNSSDialog
+                            trigger={
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="w-full px-8 py-4 rounded-full bg-nss-red text-white font-bold text-lg shadow-xl hover:bg-nss-red-dark hover:scale-105 transition-all"
+                                >
+                                    Register Now
+                                </button>
+                            }
+                        />
+                    </div>
+                </div>,
+                document.body
+            )}
         </nav>
     );
 };

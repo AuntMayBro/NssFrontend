@@ -28,7 +28,7 @@ const ActivityCard = ({ activity }: ActivityProps) => {
                 className="group bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full cursor-pointer relative"
                 onClick={toggleModal}
             >
-                <div className="h-48 bg-gray-100 relative overflow-hidden">
+                <div className="h-32 md:h-48 bg-gray-100 relative overflow-hidden">
                     <div className="absolute inset-0 bg-nss-navy/10 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
                     {activity.mainImage ? (
                         <img
@@ -38,25 +38,25 @@ const ActivityCard = ({ activity }: ActivityProps) => {
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200">
-                            <span className="text-sm">No Image</span>
+                            <span className="text-xs md:text-sm">No Image</span>
                         </div>
                     )}
                     {activity.category && (
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-nss-navy uppercase tracking-wider shadow-sm z-20">
+                        <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 backdrop-blur-sm px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold text-nss-navy uppercase tracking-wider shadow-sm z-20">
                             {activity.category}
                         </div>
                     )}
                 </div>
 
                 <div className="p-3 md:p-5 flex flex-col flex-grow">
-                    <div className="hidden md:flex items-center gap-4 text-xs text-gray-500 mb-3">
+                    <div className="flex items-center gap-4 text-[10px] md:text-xs text-gray-500 mb-1 md:mb-3">
                         <div className="flex items-center gap-1">
-                            <Calendar size={14} className="text-nss-red" />
+                            <Calendar size={12} className="text-nss-red md:w-3.5 md:h-3.5" />
                             <span>{activity.date ? new Date(activity.date).toLocaleDateString() : 'Date TBD'}</span>
                         </div>
                     </div>
 
-                    <h3 className="text-sm md:text-lg font-bold text-nss-navy mb-1 md:mb-2 group-hover:text-nss-blue transition-colors line-clamp-2">
+                    <h3 className="text-sm md:text-lg font-bold text-nss-navy mb-1 md:mb-2 group-hover:text-nss-blue transition-colors line-clamp-2 leading-tight">
                         {activity.title}
                     </h3>
 
