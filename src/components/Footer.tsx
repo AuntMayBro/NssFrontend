@@ -3,11 +3,11 @@ import { Facebook, Instagram, Linkedin, Twitter, Youtube, MapPin, Mail, Phone } 
 
 const Footer = () => {
     return (
-        <footer id="contact" className="bg-nss-navy-light text-white pt-16 pb-8 border-t border-white/5 font-sans">
+        <footer id="contact" className="bg-nss-navy-light text-white pt-10 md:pt-16 pb-8 border-t border-white/5 font-sans">
             <div className="container mx-auto px-4 md:px-8">
-                <div className="grid md:grid-cols-12 gap-8 mb-12">
+                <div className="grid md:grid-cols-12 gap-8 mb-8 md:mb-12">
                     <div className="md:col-span-8">
-                        <h4 className="font-bold text-3xl mb-8 text-white tracking-tight">Contact Us</h4>
+                        <h4 className="font-bold text-2xl md:text-3xl mb-6 md:mb-8 text-white tracking-tight">Contact Us</h4>
 
                         <div className="grid md:grid-cols-2 gap-8 mb-8">
                             <div className="space-y-6">
@@ -72,11 +72,15 @@ const Footer = () => {
 
                     <div className="md:col-span-4">
                         <h4 className="font-bold text-lg mb-6 text-nss-gold relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-nss-gold">Quick Links</h4>
-                        <ul className="space-y-3">
+                        <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
                             <li><a href="/#home" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Home</a></li>
                             <li><a href="/registration" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Register</a></li>
                             <li><a href="/activities" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Activities</a></li>
+                            <li><a href="/mentors" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Mentors</a></li>
+                            <li><a href="/resources" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Resources</a></li>
                             <li><a href="/#team" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Developers</a></li>
+                            <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Contact</a></li>
+                            <li><a href="/gallery" className="text-gray-400 hover:text-white transition-colors hover:pl-2">Gallery</a></li>
                         </ul>
                     </div>
                 </div>

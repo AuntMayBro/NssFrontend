@@ -12,6 +12,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import RegistrationPage from "./pages/RegistrationPage";
 import CheckRegistrationPage from "./pages/CheckRegistrationPage";
 import VolunteerList from "./components/registration/VolunteerList";
+import ResourcesPage from "./pages/Resources";
+import MentorsPage from "./pages/Mentors";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/check-registration" element={<CheckRegistrationPage />} />
           <Route path="/volunteers" element={<VolunteerList />} />
+          <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/mentors" element={<MentorsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

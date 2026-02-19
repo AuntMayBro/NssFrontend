@@ -27,4 +27,16 @@ export const queries = {
   siteSettings: `*[_type == "siteSettings"][0]{
     siteTitle, siteDescription, defaultShareImage{asset->url}, gaId, downloads[]
   }`,
+
+  resources: `*[_type == "resource"] | order(publishedDate desc){
+    _id, title, category, academicYear, publishedDate, "fileUrl": file.asset->url
+  }`,
+
+  mentors: `*[_type == "mentor"] | order(priority asc){
+    _id, name, role, message, "image": image.asset->url
+  }`,
+
+  programOfficer: `*[_type == "programOfficer"][0]{
+    _id, name, role, message, "image": image.asset->url, "coverImage": coverImage.asset->url
+  }`,
 };

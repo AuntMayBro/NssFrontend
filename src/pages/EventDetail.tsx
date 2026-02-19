@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Calendar, MapPin, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { client } from "@/lib/sanityClient";
+import { client } from "@/lib/sanity";
 import { queries } from "@/lib/queries";
 
 const EventDetail = () => {

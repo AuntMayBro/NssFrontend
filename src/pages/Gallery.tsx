@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { client } from "@/lib/sanityClient";
+import { client } from "@/lib/sanity";
 
 const galleryQuery = `*[_type == "galleryImage"] | order(takenAt desc){
     _id, caption, "image": image.asset->url, "event": event-> { _id, title, slug }, uploadedBy-> { name, _id, "avatar": avatar.asset->url }, takenAt

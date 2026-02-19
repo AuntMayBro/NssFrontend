@@ -6,6 +6,7 @@ import About from "@/components/About";
 // import Activities from "@/components/Activities"; // Replaced with dynamic fetch
 import Section from '@/components/ui/Section';
 import Team from "@/components/Team";
+import ProgramOfficer from "@/components/ProgramOfficer";
 
 import Footer from "@/components/Footer";
 import ActivityCard from "@/components/ActivityCard";
@@ -51,7 +52,7 @@ const Index = () => {
 
       {/* Dynamic Activities Section */}
       <Section id="activities" className="bg-gray-50">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <span className="text-nss-blue font-bold tracking-widest uppercase text-sm">What We Do</span>
           <h2 className="text-3xl md:text-4xl font-bold text-nss-navy mt-2">Recent Activities</h2>
           <div className="w-20 h-1 bg-nss-blue mx-auto mt-4 rounded-full"></div>
@@ -83,6 +84,7 @@ const Index = () => {
       </Section>
 
 
+      <ProgramOfficer />
       <Team />
 
       <Footer />

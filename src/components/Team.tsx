@@ -107,9 +107,9 @@ const Team = () => {
                 <div className="space-y-16">
                     {/* Program Officer Section */}
                     {programOfficer && (
-                        <div className="flex flex-col items-center justify-center mb-16 animate-fade-up">
-                            <h3 className="text-xl font-bold text-nss-navy/60 uppercase tracking-widest mb-8">Program Officer</h3>
-                            <div className="transform scale-110">
+                        <div className="flex flex-col items-center justify-center mb-10 md:mb-16 animate-fade-up">
+                            <h3 className="text-xl font-bold text-nss-navy/60 uppercase tracking-widest mb-6 md:mb-8">Program Officer</h3>
+                            <div className="transform md:scale-110 w-full max-w-sm">
                                 <MemberCard member={programOfficer} />
                             </div>
                         </div>

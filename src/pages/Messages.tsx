@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { client } from "@/lib/sanityClient";
+import { client } from "@/lib/sanity";
+import { queries } from "@/lib/queries";
 import { Quote } from "lucide-react";
 
 // Fallback query if import fails, ensuring standalone functionality
-const messagesQuery = `*[_type == "message"] | order(_createdAt desc){
-    _id, name, year, photo{asset->url}, text
-}`;
+const messagesQuery = `* [_type == "message"] | order(_createdAt desc){
+    _id, name, year, photo{ asset -> url }, text
+} `;
 
 const Messages = () => {
     const [messages, setMessages] = useState<any[]>([]);

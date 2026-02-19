@@ -184,11 +184,11 @@ const Hero = () => {
                 ))}
 
                 {/* Scroll Indicator Overlay on Image */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-10">
+                {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-10">
                     <a href="/#about" className="text-white drop-shadow-md opacity-80 hover:opacity-100 transition-opacity p-2 bg-black/20 backdrop-blur-sm rounded-full">
                         <ChevronDown className="w-6 h-6" />
                     </a>
-                </div>
+                </div> */}
             </div>
 
         </Section>

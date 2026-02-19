@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { client } from "@/lib/sanityClient";
+import { client } from "@/lib/sanity";
+import { queries } from "@/lib/queries";
 import TeamGrid from "@/components/TeamGrid";
 
 const teamQuery = `*[_type == "teamMember"] | order(name asc){
