@@ -55,7 +55,7 @@ const Hero = () => {
     }, [images.length]); // Re-run when images array changes
 
     return (
-        <Section id="home" className="relative min-h-screen flex flex-col pt-24 md:pt-32">
+        <Section id="home" className="relative min-h-screen flex flex-col pt-30 md:pt-32">
 
             {/* Top Content Section - Clean White Background */}
             <div className="flex-none w-full bg-white relative z-10 px-4 md:px-8 pb-12 md:pb-16 text-center">

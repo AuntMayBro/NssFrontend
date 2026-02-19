@@ -51,19 +51,19 @@ const Footer = () => {
                         <div className="pt-8 border-t border-white/5">
                             <h5 className="font-semibold text-sm text-gray-500 mb-6 uppercase tracking-wider">Connect With Us</h5>
                             <div className="flex gap-4">
-                                <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 hover:scale-110 transition-all duration-300 group">
+                                <a href="https://www.instagram.com/nss.ietdavv/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 hover:scale-110 transition-all duration-300 group">
                                     <Instagram size={22} className="group-hover:stroke-2" />
                                 </a>
-                                <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-blue-600 hover:scale-110 transition-all duration-300 group">
+                                <a href="https://www.facebook.com/people/NSS-IET-DAVV-Indore/61577540614127/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-blue-600 hover:scale-110 transition-all duration-300 group">
                                     <Facebook size={22} className="group-hover:stroke-2" />
                                 </a>
-                                <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-sky-500 hover:scale-110 transition-all duration-300 group">
+                                <a href="https://x.com/nssunitietdavv" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-sky-500 hover:scale-110 transition-all duration-300 group">
                                     <Twitter size={22} className="group-hover:stroke-2" />
                                 </a>
-                                <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-red-600 hover:scale-110 transition-all duration-300 group">
+                                <a href="https://www.youtube.com/@nationalserviceschemedavv81" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-red-600 hover:scale-110 transition-all duration-300 group">
                                     <Youtube size={22} className="group-hover:stroke-2" />
                                 </a>
-                                <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 group">
+                                <a href="https://www.linkedin.com/in/nss-iet-davv/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 group">
                                     <Linkedin size={22} className="group-hover:stroke-2" />
                                 </a>
                             </div>
