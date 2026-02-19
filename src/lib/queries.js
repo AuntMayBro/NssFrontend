@@ -1,6 +1,12 @@
 export const queries = {
-  teamMembers: `*[_type == "teamMember"] | order(name asc){
-    _id, name, role, "avatar": avatar.asset->url, social[]{platform, url}, email
+  team: `*[_type == "team" && type == "current"] | order(vertical->order asc, name asc){
+    name,
+    "role": coalesce(vertical->title, role),
+    image,
+    year,
+    type,
+    linkedin,
+    email
   }`,
 
   upcomingEvents: `*[_type == "event" && date >= now()] | order(date asc)[0...6]{
@@ -38,5 +44,20 @@ export const queries = {
 
   programOfficer: `*[_type == "programOfficer"][0]{
     _id, name, role, message, "image": image.asset->url, "coverImage": coverImage.asset->url
+  }`,
+
+  // Fetch verticals with their assigned head for a specific year (or generally current)
+  // We actually want to fetch verticals and *expand* the team member assigned to it for the current session
+  verticals: `*[_type == "vertical"] | order(order asc){
+    _id,
+    title,
+    order,
+    description,
+    "currentHead": *[_type == "team" && references(^._id) && type == "current"][0]{
+      name,
+      "image": image.asset->url,
+      email,
+      linkedin
+    }
   }`,
 };

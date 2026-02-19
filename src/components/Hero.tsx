@@ -166,7 +166,7 @@ const Hero = () => {
             </div>
 
             {/* Bottom Image Section - Slideshow */}
-            <div className="flex-grow w-full relative min-h-[60vh] md:min-h-[75vh] bg-gray-100 overflow-hidden">
+            <div className="flex-grow w-full relative aspect-[4/3] md:aspect-auto md:min-h-[75vh] bg-gray-100 overflow-hidden">
                 <div className="absolute inset-0 bg-gray-100 animate-pulse"></div> {/* Placeholder */}
 
                 {images.map((img, index) => (

@@ -48,23 +48,23 @@ const ActivityCard = ({ activity }: ActivityProps) => {
                     )}
                 </div>
 
-                <div className="p-5 flex flex-col flex-grow">
-                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                <div className="p-3 md:p-5 flex flex-col flex-grow">
+                    <div className="hidden md:flex items-center gap-4 text-xs text-gray-500 mb-3">
                         <div className="flex items-center gap-1">
                             <Calendar size={14} className="text-nss-red" />
                             <span>{activity.date ? new Date(activity.date).toLocaleDateString() : 'Date TBD'}</span>
                         </div>
                     </div>
 
-                    <h3 className="text-lg font-bold text-nss-navy mb-2 group-hover:text-nss-blue transition-colors line-clamp-2">
+                    <h3 className="text-sm md:text-lg font-bold text-nss-navy mb-1 md:mb-2 group-hover:text-nss-blue transition-colors line-clamp-2">
                         {activity.title}
                     </h3>
 
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+                    <p className="hidden md:block text-gray-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
                         {activity.description}
                     </p>
 
-                    <div className="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
+                    <div className="hidden md:flex pt-4 border-t border-gray-100 justify-between items-center mt-auto">
                         <span className="text-xs font-medium text-nss-red group-hover:underline transition-all">Read Full Details</span>
                         <div className="w-8 h-8 rounded-full bg-nss-blue/10 flex items-center justify-center text-nss-blue group-hover:bg-nss-blue group-hover:text-white transition-all">
                             <ArrowRight size={14} />

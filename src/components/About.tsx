@@ -63,13 +63,15 @@ const About = () => {
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        className="p-6 rounded-xl border border-gray-100 bg-white hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group"
+                        className="p-4 md:p-6 rounded-xl border border-gray-100 bg-white hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group"
                     >
-                        <div className="mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                            {card.icon}
+                        <div className="mb-3 md:mb-4 bg-gray-50 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <div className="scale-75 md:scale-100 transform">
+                                {card.icon}
+                            </div>
                         </div>
-                        <h3 className="text-xl font-bold text-nss-navy mb-3 group-hover:text-nss-red transition-colors">{card.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">
+                        <h3 className="text-lg md:text-xl font-bold text-nss-navy mb-2 md:mb-3 group-hover:text-nss-red transition-colors">{card.title}</h3>
+                        <p className="text-gray-500 text-xs md:text-sm leading-relaxed">
                             {card.description}
                         </p>
                     </div>

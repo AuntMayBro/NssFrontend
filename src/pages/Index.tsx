@@ -63,7 +63,7 @@ const Index = () => {
             <Loader2 className="w-8 h-8 text-nss-blue animate-spin" />
           </div>
         ) : activities.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
             {activities.map(activity => (
               <ActivityCard key={activity._id} activity={activity} />
             ))}
